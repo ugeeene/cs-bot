@@ -29,21 +29,21 @@ def tobase(num,base):
     return b[::-1] 
 
 
-button_hi= KeyboardButton('Привет ✌')
+button_hi= KeyboardButton('Wassup')
 button_help= KeyboardButton('/help')
-button_go= KeyboardButton('Погнали🚀')
-button_plus= KeyboardButton('Сложение +')
-button_minus= KeyboardButton('Вычитание -')
-button_multiply= KeyboardButton('Умножение *')
-button_divide1= KeyboardButton('Деление /')
-button_divide2= KeyboardButton('Целочисленное деление //')
-button_divide3= KeyboardButton('Остаток от деления %')
-button_stepen= KeyboardButton('возведение в степень ^')
-button_getsum= KeyboardButton('Получить значение суммы')
-button_getrazn= KeyboardButton('Получить значение разности')
-button_getpr= KeyboardButton('Получить значение произведения')
-button_again= KeyboardButton('Начать заново')
-button_back= KeyboardButton('Сделать шаг назад')
+button_go= KeyboardButton('Less go')
+button_plus= KeyboardButton('+')
+button_minus= KeyboardButton('-')
+button_multiply= KeyboardButton('*')
+button_divide1= KeyboardButton('/')
+button_divide2= KeyboardButton('//')
+button_divide3= KeyboardButton('%')
+button_stepen= KeyboardButton('^')
+button_getsum= KeyboardButton('Get the answer')
+button_getrazn= KeyboardButton('Get the answer')
+button_getpr= KeyboardButton('Get the answer')
+button_again= KeyboardButton('Try again')
+button_back= KeyboardButton('Go back')
 
 TOKEN: str = os.environ.get("bot-token")
 
@@ -58,11 +58,7 @@ async def process_start_command(message: types.Message):
     
 @dp.message_handler(commands=['help'])
 async def process_help_command(message: types.Message):
-    await message.answer("""Мой функционал относительно прост.
-Я провожу математические оперции с числами.
-Но доля оригинальности всё же присутствует✅✅✅
-После каждого ввода числа, я запрашиваю значение системы счисления, которой принадлежит число.
-Теперь, когда мы познакомились, нажми кнопку "Погнали🚀"   """)
+    await message.answer("""Dude just press the less go button""")
 
 @dp.message_handler(content_types=['text'])
 async def text(message: types.Message):
@@ -74,42 +70,40 @@ async def text(message: types.Message):
     global x4
     global a
     global ans
-    if message.text == 'Привет ✌':
-        await message.answer(f"""Привет {message.chat.first_name}!!!🎉🎉🎉\nЯ телеграм бот Батуа🐗🐗🐗.
-Меня создал ученик 10"З" класса, Сенькин Евгений🧠🧠🧠 @ukr_op.
-Если ты не знаешь как я работаю, то для ознакомления с моим функционалом нажми кнопку /help.""",reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_help,button_go))
-    elif message.text == 'Начать заново' or message.text == 'Погнали🚀':
-        await message.answer('Выберите действие',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True)
+    if message.text == 'Wassup':
+        await message.answer(f"""...""",reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_help,button_go))
+    elif message.text == 'Try again' or message.text == 'Less go':
+        await message.answer('Chose',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True)
                             .add(button_plus,button_minus)
                             .add(button_multiply,button_divide1)
                             .add(button_divide2)
                             .add(button_divide3)
                             .add(button_stepen))
-    elif message.text =='Сложение +':
+    elif message.text =='+':
         s='+'
-        await message.answer('Введите первое слагаемое',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
+        await message.answer('first number',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
         i='x1'
-    elif message.text =='Вычитание -':
+    elif message.text =='-':
         s='-'
-        await message.answer('Введите уменьшаемое число',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
+        await message.answer('first number',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
         i='x1'
-    elif message.text =='Умножение *':
+    elif message.text =='*':
         s='*'
-        await message.answer('Введите первый множитель',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
+        await message.answer('first number',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
         i='x1'
-    elif message.text =='Деление /':
+    elif message.text =='/':
         pass
-    elif message.text =='Целочисленное деление //':
+    elif message.text =='//':
         pass
-    elif message.text =='Остаток от деления %':
+    elif message.text =='%':
         pass
-    elif message.text =='Возведение в степень ^':
+    elif message.text =='^':
         pass
-    elif message.text== 'Получить значение суммы' or message.text== 'Получить значение разности' or message.text== 'Получить значение произведения':
+    elif message.text== 'Get the answer':
         await message.answer(ans,reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_again))
-    elif message.text =='Сделать шаг назад':
+    elif message.text =='Go back':
         if i=='x1':
-            await message.answer('Выберите действие',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True)
+            await message.answer('choose',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True)
                             .add(button_plus,button_minus)
                             .add(button_multiply,button_divide1)
                             .add(button_divide2)
@@ -118,53 +112,53 @@ async def text(message: types.Message):
         elif i=='x2':
             i='x1'
             if s=='+':
-                await message.answer('Введите первое слагаемое.')
+                await message.answer('first number.')
             elif s=='-':
-                await message.answer('Введите уменьшаемое число.')
+                await message.answer('first number.')
             elif s=='*':
-                await message.answer('Введите первый множитель.')
+                await message.answer('first number.')
         elif i=='x3':
             i='x2'
             if s=='+':
-                await message.answer('Введите значение системы счисления первого слагаемого.')
+                await message.answer('first number system')
             elif s=='-':
-                await message.answer('Введите значение системы счисления уменьшаемого числа.')
+                await message.answer('first number systme')
             elif s=='*':
-                await message.answer('Введите значение системы счисления первого множителя.')
+                await message.answer('first number system')
         elif i=='x4':
             i='x3'
             if s=='+':
-                await message.answer('Введите второе слагаемое.')
+                await message.answer('second number')
             elif s=='-':
-                await message.answer('Введите вычитаемое число.')
+                await message.answer('second number')
             elif s=='*':
-                await message.answer('Введите второй множитель.')
+                await message.answer('second number')
         elif i=='a':
             i='x4'
             if s=='+':
-                await message.answer('Введите значение системы счисления второго слагаемого.')
+                await message.answer('second number system')
             elif s=='-':
-                await message.answer('Введите значение системы счисления вычитаемого числа.')
+                await message.answer('second nuber system')
             elif s=='*':
-                await message.answer('Введите значение системы счисления второго множителя.')
+                await message.answer('second number system')
         elif i=='ans':
             i='a'
             if s=='+':
-                await message.answer('Введите значение системы счисления суммы.',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
+                await message.answer('answer number system',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
             elif s=='-':
-                await message.answer('Введите значение системы счисления разности.',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
+                await message.answer('answer number system',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
             elif s=='*':
-                await message.answer('Введите значение системы счисления произведения.',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
+                await message.answer('answer number system',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
     elif s=='+' or s=='-' or s=='*' or s=='/' or s=='//' or s=='%' or s=='^':
         if i=='x1':
             x1=message.text
             i='x2'
             if s=='+':
-                await message.answer('Введите значение системы счисления первого слагаемого.')
+                await message.answer('first number system')
             elif s=='-':
-                await message.answer('Введите значение системы счисления уменьшаемого числа.')
+                await message.answer('first number sysytem')
             elif s=='*':
-                await message.answer('Введите значение системы счисления первого множителя.')
+                await message.answer('first number system')
         elif i=='x2':
             try:
                 x2=int(message.text)
@@ -172,35 +166,35 @@ async def text(message: types.Message):
                     x1=int(str(x1),x2)
                     i='x3'
                     if s=='+':
-                        await message.answer('Введите второе слагаемое.')
+                        await message.answer('second number')
                     elif s=='-':
-                        await message.answer('Введите вычитаемое число.')
+                        await message.answer('second number')
                     elif s=='*':
-                        await message.answer('Введите второй множитель.')
+                        await message.answer('second number')
                 except ValueError:
                     i='x1'
                     if s=='+':
-                        await message.answer('Ошибка конвертирования числа в СС.\nВведите первое слагаемое заново.')
+                        await message.answer('there\'s an error\nTry again')
                     elif s=='-':
-                        await message.answer('Ошибка конвертирования числа в СС.\nВведите уменьшаемое число заново.')
+                        await message.answer('there\'s an error\nTry again')
                     elif s=='*':
-                        await message.answer('Ошибка конвертирования числа в СС.\nВведите первый множитель заново.')
+                        await message.answer('there\'s an error\nTry again')
             except ValueError:
                 if s=='+':
-                    await message.answer('Ошибка считывания значения СС.\nВведите значение СС первого слагаемого заново.')
+                    await message.answer('there\'s an error\nTry again')
                 elif s=='-':
-                    await message.answer('Ошибка считывания значения СС.\nВведите значение СС уменьшаемого числа заново.')
+                    await message.answer('there\'s an error\nTry again')
                 elif s=='*':
-                    await message.answer('Ошибка считывания значения СС.\nВведите значение СС первого множителя заново.')
+                    await message.answer('there\'s an error\nTry again')
         elif i=='x3':
             x3=message.text
             i='x4'
             if s=='+':
-                await message.answer('Введите значение системы счисления второго слагаемого.')
+                await message.answer('second number system')
             elif s=='-':
-                await message.answer('Введите значение системы счисления вычитаемого числа.')
+                await message.answer('second number system')
             elif s=='*':
-                await message.answer('Введите значение системы счисления второго множителя.')
+                await message.answer('second number systme')
         elif i=='x4':
             try:
                 x4=int(message.text)
@@ -208,26 +202,26 @@ async def text(message: types.Message):
                     x3=int(str(x3),x4)
                     i='a'
                     if s=='+':
-                        await message.answer('Введите значение системы счисления суммы.')
+                        await message.answer('answer number system')
                     elif s=='-':
-                        await message.answer('Введите значение системы счисления разности.')
+                        await message.answer('answer number systme')
                     elif s=='*':
-                        await message.answer('Введите значение системы счисления произведения.')
+                        await message.answer('answer number system')
                 except ValueError:
                     i='x3'
                     if s=='+':
-                        await message.answer('Ошибка конвертирования числа в СС.\nВведите второе слагаемое заново.')
+                        await message.answer('there\'s an error\nTry again')
                     elif s=='-':
-                        await message.answer('Ошибка конвертирования числа в СС.\nВведите вычитаемое число заново.')
+                        await message.answer('there\'s an error\nTry again')
                     if s=='*':
-                        await message.answer('Ошибка конвертирования числа в СС.\nВведите второй множитель заново.')
+                        await message.answer('there\'s an error\nTry again')
             except ValueError:
                 if s=='+':
-                    await message.answer('Ошибка считывания значения СС.\nВведите значение СС второго слагаемого заново.')
+                    await message.answer('there\'s an error\nTry again')
                 elif s=='-':
-                    await message.answer('Ошибка считывания значения СС.\nВведите значение СС вычитаемого числа заново.')
+                    await message.answer('there\'s an error\nTry again')
                 elif s=='*':
-                    await message.answer('Ошибка считывания значения СС.\nВведите значение СС второго множителя заново.')
+                    await message.answer('there\'s an error\nTry again')
         elif i=='a':
             try:
                 a=int(message.text)
@@ -236,7 +230,7 @@ async def text(message: types.Message):
                 if s=='+':
                     ans=x1+x3
                     ans=tobase(ans,a)
-                    await message.answer('Значение суммы посчитано.',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_getsum,button_back))
+                    await message.answer('answer is ready',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_getsum,button_back))
                 elif s=='-':
                     ans=x1-x3
                     if ans<0:
@@ -244,20 +238,20 @@ async def text(message: types.Message):
                         ans=0-ans
                     else:
                         ans=tobase(ans,a)
-                    await message.answer('Значение разности посчитано.',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_getrazn,button_back))
+                    await message.answer('answer is ready',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_getrazn,button_back))
                 elif s=='*':
                     ans=x1*x3
                     ans=tobase(ans,a)
-                    await message.answer('Значение произведения посчитано.',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_getpr,button_back))
+                    await message.answer('answer is ready',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_getpr,button_back))
             except ValueError:
                 if s=='+':
-                    await message.answer('Ошибка считывания значения СС.\nВведите значение СС суммы заново.')
+                    await message.answer('there\'s an error\nTry again')
                 elif s=='-':
-                    await message.answer('Ошибка считывания значения СС.\nВведите значение СС разности заново.')
+                    await message.answer('there\'s an error\nTry again')
                 elif s=='*':
-                    await message.answer('Ошибка считывания значения СС.\nВведите значение СС произведения заново.')
+                    await message.answer('there\'s an error\nTry again')
     else:
-        await message.answer('Ошибка!!!\nНеизвестная команда👺')
+        await message.answer('there\'s an error\nTry again')
 
 
 if __name__ == '__main__':
