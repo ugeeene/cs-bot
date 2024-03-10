@@ -35,9 +35,8 @@ button_go= KeyboardButton('Less go')
 button_plus= KeyboardButton('+')
 button_minus= KeyboardButton('-')
 button_multiply= KeyboardButton('*')
-button_divide1= KeyboardButton('/')
-button_divide2= KeyboardButton('//')
-button_divide3= KeyboardButton('%')
+button_divide1= KeyboardButton('//')
+button_divide2= KeyboardButton('%')
 button_stepen= KeyboardButton('^')
 button_getsum= KeyboardButton('Get the answer')
 button_getrazn= KeyboardButton('Get the answer')
@@ -75,7 +74,7 @@ async def text(message: types.Message):
     elif message.text == 'Try again' or message.text == 'Less go':
         await message.answer('Chose',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True)
                             .add(button_plus,button_minus)
-                            .add(button_multiply,button_divide1)
+                            .add(button_multiply)
                             .add(button_divide2)
                             .add(button_divide3)
                             .add(button_stepen))
@@ -91,21 +90,25 @@ async def text(message: types.Message):
         s='*'
         await message.answer('first number',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
         i='x1'
-    elif message.text =='/':
-        pass
     elif message.text =='//':
-        pass
+        s='//'
+        await message.answer('first number',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
+        i='x1'
     elif message.text =='%':
-        pass
+        s='%'
+        await message.answer('first number',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
+        i='x1'
     elif message.text =='^':
-        pass
+        s='^'
+        await message.answer('first number',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
+        i='x1'
     elif message.text== 'Get the answer':
         await message.answer(ans,reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_again))
     elif message.text =='Go back':
         if i=='x1':
             await message.answer('choose',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True)
                             .add(button_plus,button_minus)
-                            .add(button_multiply,button_divide1)
+                            .add(button_multiply)
                             .add(button_divide2)
                             .add(button_divide3)
                             .add(button_stepen))
@@ -117,14 +120,26 @@ async def text(message: types.Message):
                 await message.answer('first number.')
             elif s=='*':
                 await message.answer('first number.')
+             elif s=='//':
+                await message.answer('first number.')
+             elif s=='%':
+                await message.answer('first number.')
+             elif s=='^':
+                await message.answer('first number.')
         elif i=='x3':
             i='x2'
             if s=='+':
                 await message.answer('first number system')
             elif s=='-':
-                await message.answer('first number systme')
+                await message.answer('first number system')
             elif s=='*':
                 await message.answer('first number system')
+            elif s=='//':
+                await message.answer('first number systme')
+            elif s=='%':
+                await message.answer('first number system')
+            elif s=='^':
+                await message.answer('first number systme')
         elif i=='x4':
             i='x3'
             if s=='+':
@@ -133,13 +148,25 @@ async def text(message: types.Message):
                 await message.answer('second number')
             elif s=='*':
                 await message.answer('second number')
+            elif s=='//':
+                await message.answer('second number')
+            elif s=='%':
+                await message.answer('second number')
+            elif s=='^':
+                await message.answer('second number')
         elif i=='a':
             i='x4'
             if s=='+':
                 await message.answer('second number system')
             elif s=='-':
-                await message.answer('second nuber system')
+                await message.answer('second number system')
             elif s=='*':
+                await message.answer('second number system')
+            elif s=='//':
+                await message.answer('second number system')
+            elif s=='%':
+                await message.answer('second number system')
+            elif s=='^':
                 await message.answer('second number system')
         elif i=='ans':
             i='a'
@@ -149,7 +176,13 @@ async def text(message: types.Message):
                 await message.answer('answer number system',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
             elif s=='*':
                 await message.answer('answer number system',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
-    elif s=='+' or s=='-' or s=='*' or s=='/' or s=='//' or s=='%' or s=='^':
+            elif s=='//':
+                await message.answer('answer number system',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
+            elif s=='%':
+                await message.answer('answer number system',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
+            elif s=='^':
+                await message.answer('answer number system',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_back))
+    elif s=='+' or s=='-' or s=='*' or s=='//' or s=='%' or s=='^':
         if i=='x1':
             x1=message.text
             i='x2'
@@ -158,6 +191,12 @@ async def text(message: types.Message):
             elif s=='-':
                 await message.answer('first number sysytem')
             elif s=='*':
+                await message.answer('first number system')
+            elif s=='//':
+                await message.answer('first number system')
+            elif s=='%':
+                await message.answer('first number sysytem')
+            elif s=='^':
                 await message.answer('first number system')
         elif i=='x2':
             try:
@@ -171,6 +210,12 @@ async def text(message: types.Message):
                         await message.answer('second number')
                     elif s=='*':
                         await message.answer('second number')
+                    elif s=='//':
+                        await message.answer('second number')
+                    elif s=='%':
+                        await message.answer('second number')
+                    elif s=='^':
+                        await message.answer('second number')
                 except ValueError:
                     i='x1'
                     if s=='+':
@@ -179,12 +224,24 @@ async def text(message: types.Message):
                         await message.answer('there\'s an error\nTry again')
                     elif s=='*':
                         await message.answer('there\'s an error\nTry again')
+                    elif s=='//':
+                        await message.answer('there\'s an error\nTry again')
+                    elif s=='%':
+                        await message.answer('there\'s an error\nTry again')
+                    elif s=='^':
+                        await message.answer('there\'s an error\nTry again')
             except ValueError:
                 if s=='+':
                     await message.answer('there\'s an error\nTry again')
                 elif s=='-':
                     await message.answer('there\'s an error\nTry again')
                 elif s=='*':
+                    await message.answer('there\'s an error\nTry again')
+                elif s=='//':
+                    await message.answer('there\'s an error\nTry again')
+                elif s=='%':
+                    await message.answer('there\'s an error\nTry again')
+                elif s=='^':
                     await message.answer('there\'s an error\nTry again')
         elif i=='x3':
             x3=message.text
@@ -194,6 +251,12 @@ async def text(message: types.Message):
             elif s=='-':
                 await message.answer('second number system')
             elif s=='*':
+                await message.answer('second number system')
+            elif s=='//':
+                await message.answer('second number system')
+            elif s=='%':
+                await message.answer('second number system')
+            elif s=='^':
                 await message.answer('second number systme')
         elif i=='x4':
             try:
@@ -204,8 +267,14 @@ async def text(message: types.Message):
                     if s=='+':
                         await message.answer('answer number system')
                     elif s=='-':
-                        await message.answer('answer number systme')
+                        await message.answer('answer number system')
                     elif s=='*':
+                        await message.answer('answer number system')
+                    elif s=='//':
+                        await message.answer('answer number system')
+                    elif s=='%':
+                        await message.answer('answer number system')
+                    elif s=='^':
                         await message.answer('answer number system')
                 except ValueError:
                     i='x3'
@@ -215,12 +284,24 @@ async def text(message: types.Message):
                         await message.answer('there\'s an error\nTry again')
                     if s=='*':
                         await message.answer('there\'s an error\nTry again')
+                    elif s=='//':
+                        await message.answer('there\'s an error\nTry again')
+                    elif s=='%':
+                        await message.answer('there\'s an error\nTry again')
+                    if s=='^':
+                        await message.answer('there\'s an error\nTry again')
             except ValueError:
                 if s=='+':
                     await message.answer('there\'s an error\nTry again')
                 elif s=='-':
                     await message.answer('there\'s an error\nTry again')
                 elif s=='*':
+                    await message.answer('there\'s an error\nTry again')
+                if s=='//':
+                    await message.answer('there\'s an error\nTry again')
+                elif s=='%':
+                    await message.answer('there\'s an error\nTry again')
+                elif s=='^':
                     await message.answer('there\'s an error\nTry again')
         elif i=='a':
             try:
@@ -243,12 +324,30 @@ async def text(message: types.Message):
                     ans=x1*x3
                     ans=tobase(ans,a)
                     await message.answer('answer is ready',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_getpr,button_back))
+                elif s=='//':
+                    ans=x1//x3
+                    ans=tobase(ans,a)
+                    await message.answer('answer is ready',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_getpr,button_back))
+                elif s=='%':
+                    ans=x1%x3
+                    ans=tobase(ans,a)
+                    await message.answer('answer is ready',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_getpr,button_back))
+                elif s=='^':
+                    ans=x1**x3
+                    ans=tobase(ans,a)
+                    await message.answer('answer is ready',reply_markup=ReplyKeyboardMarkup(resize_keyboard=True).add(button_getpr,button_back))
             except ValueError:
                 if s=='+':
                     await message.answer('there\'s an error\nTry again')
                 elif s=='-':
                     await message.answer('there\'s an error\nTry again')
                 elif s=='*':
+                    await message.answer('there\'s an error\nTry again')
+                elif s=='//':
+                    await message.answer('there\'s an error\nTry again')
+                elif s=='%':
+                    await message.answer('there\'s an error\nTry again')
+                elif s=='^':
                     await message.answer('there\'s an error\nTry again')
     else:
         await message.answer('there\'s an error\nTry again')
